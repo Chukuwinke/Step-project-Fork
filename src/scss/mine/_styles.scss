@@ -6,6 +6,7 @@ body {
 }
 .header {
   .navbar {
+    position: relative;
     height: $navbar-height-320px;
     display: flex;
     justify-content: space-between;
@@ -21,8 +22,49 @@ body {
   }
   .navbar__menu {
     display: none;
-    &__item {
+    position: absolute;
+    top: $navbar-height-320px;
+    width: 90%;
+    right: 5%;
+    background-color: #333333;
+    .navbar__item {
+      .navbar__link{
+        display: flex;
+        position: relative;
+        font-size: 25px;
+        font-family: $font-Montserrat;
+        justify-content: flex-start;
+        padding-left: 32px;
+        align-items: center;
+        text-decoration: none;
+        height: 92px;
+        color: $white;
+        border-bottom: 1px solid #3B3B3B;
+        &:hover{
+          color: $color-purple--light;
+          &::before{
+            content: "";
+            position: absolute;
+            left: 0;
+            width: 8px;
+            height: 53px;
+            background-color: $color-purple--light;
+            z-index: 100;
+          }
+        }
+      }
     }
+  }
+  .hamburger{
+    max-width: 26px;
+    height: 26px;
+  }
+  .show{
+    display: unset;
+  }
+  .hamburger__close{
+    display: none;
+    width: 100%;
   }
   .hero {
     padding: 43px 32px 424px;
@@ -51,6 +93,115 @@ body {
     text-transform: uppercase;
     font-family: $font-Lato;
   }
+  @media (min-width: 481px) and (max-width: 992px) {
+    .logo-container{
+      display: flex;
+      align-items: center;
+    }
+    .logo__text {
+      font-size: 24px;
+      margin-left: 17px;
+      text-transform: uppercase;
+      font-weight: bold;
+      font-family: $font-Lato;
+      color: $color-purple--light;
+      display: inherit;
+    }
+    .navbar__menu{
+      display: flex;
+      position: initial;
+      background: none;
+      justify-content: space-evenly;
+      width: 100%;
+      margin: auto;
+      height: fit-content;
+      .navbar__item{
+        text-align: center;
+        //width: fit-content;
+        .navbar__link{
+          font-size: 16px;
+          height: fit-content;
+          width: 100%;
+          padding: unset;
+          border: none;
+          height: 40px;
+          color: $color-purple--light;
+          &:hover{
+            color: $white;
+            &::before{
+              content: none;
+            }
+          }
+        }
+      }
+    }
+    .navbar{
+      display: flex;
+     flex-wrap: wrap;
+     padding-top: 18px;
+     max-height: $navbar-height-768px;
+    }
+    
+    .hamburger{
+      display: none;
+    }
+  }
+  @media (min-width: 993px) {
+    .navbar{
+      display: flex;
+      padding: 0 90px;
+      max-height: $navbar-height-768px;
+    }
+    .logo-container{
+      display: flex;
+      align-items: center;
+    }
+    .logo__text {
+      font-size: 24px;
+      margin-left: 17px;
+      text-transform: uppercase;
+      font-weight: bold;
+      font-family: $font-Lato;
+      color: $color-purple--light;
+      display: inherit;
+    }
+    .navbar__menu{
+      display: flex;
+      position: initial;
+      background: none;
+      justify-content: flex-end;
+      width: 100%;
+      margin: auto;
+      height: fit-content;
+      order: 1;
+      .navbar__item{
+        text-align: center;
+        margin-right: 48px;
+        .navbar__link{
+          font-size: 16px;
+          height: fit-content;
+          width: 100%;
+          padding: unset;
+          border: none;
+          height: 40px;
+          color: $color-purple--light;
+          &:hover{
+            color: $white;
+            &::before{
+              content: none;
+              
+            }
+          }
+        }
+      }
+    }
+    .navbar__btn{
+      order: 2;
+    }
+    .hamburger{
+      display: none;
+    }
+  }
 }
 .main {
   position: relative;
@@ -76,7 +227,6 @@ body {
     align-items: center;
     text-align: center;
     padding: 0 20px;
-    //max-width: 266px;
   }
   .product__header {
     font-size: 30px;
@@ -99,14 +249,7 @@ body {
   .watch,
   .star,
   .fork {
-    // padding: 0;
-    // display: flex;
-    // justify-content: center;
-    // align-items: center;
-    // margin-bottom: 20px;
-    // width: fit-content;
-    img {
-      //max-width: 20%;
+    .github__img {
       height: 70%;
     }
     div {
@@ -126,8 +269,6 @@ body {
       justify-content: center;
       font-size: 13px;
       font-weight: bold;
-
-      //text-align: center;
       margin: auto;
       height: 100%;
       width: 100%;
@@ -147,23 +288,22 @@ body {
     color: $color-purple--light;
     margin-bottom: 34px;
   }
-  .features__container {
-  }
   .side-crop {
     width: 100%;
     overflow: hidden;
   }
   .features__img {
-    max-width: 515px;
+    max-width: 516px;
   }
+  
   .feature__item {
     display: flex;
     padding: 0 23px;
     flex-direction: column;
     align-items: center;
+    text-align: center;
     margin-bottom: 37px;
   }
-
   .feature__img {
     max-width: 111px;
     max-height: 84px;
@@ -176,9 +316,76 @@ body {
   }
   .feature__desc {
     font-size: 12px;
-    text-align: center;
-    //width: 266px;
     font-family: $font-Lato;
     color: $text-color-grey--light;
+  }
+  @media (min-width: 481px) and (max-width: 992px) {
+    .features__container{
+      margin: 0 30px;
+    }
+    .features__img {
+      max-width: 100%;
+    }
+    .feature__item{
+      flex-direction: row;
+      text-align: start;
+    }
+    .feature-img__container{
+      min-width: 111px;
+      margin-right: 24px;
+    }
+    .side-crop {
+      width: 100%;
+      overflow:auto;
+      grid-area: side;
+    }
+    .feature__desc {
+      font-size: 12px;
+    }
+  }
+  @media (min-width: 993px) {
+    .features__header-container{
+      grid-area: header;
+    }
+    .features__header{
+      font-size: 35px;
+    }
+    .features__container{
+      grid-area: main;
+      margin-left: 90px;
+      margin-right: 70px;
+    }
+    .side-crop {
+      width: 100%;
+      display: flex;
+      overflow: hidden;
+      grid-area: side;
+    }
+    .features {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      grid-template-rows: auto;
+      grid-template-areas: 
+        "main main header header"
+        "main main side side"
+        "main main side side";
+        gap: 0;
+    }
+    .feature__item{
+      flex-direction: row;
+      text-align: start;
+    }
+    .feature-desc__container{
+      align-self: flex-start;
+    }
+    .feature-img__container{
+      min-width: 111px;
+      margin-right: 24px;
+    }
+    .features__img {
+      max-width: 100%;
+      height: 100%;
+      align-self: stretch;
+    }
   }
 }

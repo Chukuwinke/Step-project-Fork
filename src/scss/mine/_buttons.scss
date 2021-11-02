@@ -33,6 +33,11 @@ $btn-types: "small" "large" "github";
         background-color: $color-purple--light;
         color: $white;
         font-size: 15px;
+        &:hover{
+            background-color: $white;
+            color: $color-purple--light;
+            border: 1px solid $color-purple--light;
+        }
     }
     @else if $type == 'large'{
         height: 45px;
@@ -44,6 +49,11 @@ $btn-types: "small" "large" "github";
         font-family: $font-Montserrat;
         font-weight: bold;
         font-size: 14px;
+        &:hover{
+            background-color: $white;
+            color: $color-purple--light;
+            border: 1px solid $color-purple--light;
+        }
     }
     @else if $type == 'github'{
         display: flex;
